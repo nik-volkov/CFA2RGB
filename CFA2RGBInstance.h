@@ -1,12 +1,12 @@
 // ****************************************************************************
-// PixInsight Class Library - PCL 02.00.13.0689
-// Standard CFA2RGB Process Module Version 01.04.03.0144
+// PixInsight Class Library - PCL 02.00.14.0695
+// Standard CFA2RGB Process Module Version 01.01.01.0001
 // ****************************************************************************
-// CFA2RGBInstance.h - Released 2014/10/29 07:35:26 UTC
+// CFA2RGBInstance.h - Released 2015/03/11 07:35:26 UTC
 // ****************************************************************************
 // This file is part of the standard CFA2RGB PixInsight module.
 //
-// Copyright (c) 2003-2014, Pleiades Astrophoto S.L. All Rights Reserved.
+// Copyright (c) 2003-2015, Pleiades Astrophoto S.L. All Rights Reserved.
 //
 // Redistribution and use in both source and binary forms, with or without
 // modification, is permitted provided that the following conditions are met:
@@ -67,7 +67,6 @@ public:
    virtual void Assign( const ProcessImplementation& );
    virtual bool CanExecuteOn( const View&, String& whyNot ) const;
    virtual bool ExecuteOn( View& );
-   //inline bool IsHistoryUpdater( const View& ) const {return false;};
 
    virtual void* LockParameter( const MetaParameter*, size_type tableRow );
    virtual bool AllocateParameter( size_type sizeOrLength, const MetaParameter* p, size_type tableRow );
@@ -79,13 +78,6 @@ private:
     * Process parameters
     */
    pcl_enum p_bayerPattern;
-
-   /*
-    * Read-only output properties
-    */
-   String     o_imageId;
-
-   virtual void DoSuperPixel( Image& target, const ImageVariant& source );
 
    friend class CFA2RGBProcess;
    friend class CFA2RGBInterface;
@@ -100,4 +92,4 @@ private:
 #endif   // __CFA2RGBInstance_h
 
 // ****************************************************************************
-// EOF CFA2RGBInstance.h - Released 2014/10/29 07:35:26 UTC
+// EOF CFA2RGBInstance.h - Released 2015/03/11 07:35:26 UTC

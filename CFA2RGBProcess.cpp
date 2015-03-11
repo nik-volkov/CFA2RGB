@@ -1,12 +1,12 @@
 // ****************************************************************************
-// PixInsight Class Library - PCL 02.00.13.0689
-// Standard CFA2RGB Process Module Version 01.04.03.0144
+// PixInsight Class Library - PCL 02.00.14.0695
+// Standard CFA2RGB Process Module Version 01.01.01.0001
 // ****************************************************************************
-// CFA2RGBProcess.cpp - Released 2014/10/29 07:35:26 UTC
+// CFA2RGBProcess.cpp - Released 2015/03/11 07:35:26 UTC
 // ****************************************************************************
 // This file is part of the standard CFA2RGB PixInsight module.
 //
-// Copyright (c) 2003-2014, Pleiades Astrophoto S.L. All Rights Reserved.
+// Copyright (c) 2003-2015, Pleiades Astrophoto S.L. All Rights Reserved.
 //
 // Redistribution and use in both source and binary forms, with or without
 // modification, is permitted provided that the following conditions are met:
@@ -61,10 +61,6 @@ namespace pcl
 
 // ----------------------------------------------------------------------------
 
-//#include "CFA2RGBIcon.xpm"
-
-// ----------------------------------------------------------------------------
-
 CFA2RGBProcess* TheCFA2RGBProcess = 0;
 
 // ----------------------------------------------------------------------------
@@ -75,8 +71,6 @@ CFA2RGBProcess::CFA2RGBProcess() : MetaProcess()
 
    // Instantiate process parameters
    new CFA2RGBBayerPatternParameter( this );
-   new CFA2RGBOutputImage( this );
-
 }
 
 // ----------------------------------------------------------------------------
@@ -106,16 +100,10 @@ String CFA2RGBProcess::Description() const
 {
    return
    "<html>"
-   "<p>Convert Bayer CFA to Bayer RGB.</p>"
+   "<p>Convert Gray Bayer CFA image to Color Bayer RGB image.</p>"
    "</html>";
 }
 
-// ----------------------------------------------------------------------------
-
-//const char** CFA2RGBProcess::IconImageXPM() const
-//{
-//   return Pixmap;
-//}
 // ----------------------------------------------------------------------------
 
 ProcessInterface* CFA2RGBProcess::DefaultInterface() const
@@ -139,104 +127,7 @@ ProcessImplementation* CFA2RGBProcess::Clone( const ProcessImplementation& p ) c
 
 // ----------------------------------------------------------------------------
 
-bool CFA2RGBProcess::CanProcessCommandLines() const
-{
-   // ### TODO update the command line processing bit
-   return false;
-}
-
-// ----------------------------------------------------------------------------
-
-static void ShowHelp()
-{
-   Console().Write(
-"<raw>"
-"Usage: CFA2RGB [<arg_list>] [<view_list>]"
-"\n"
-"\n--interface"
-"\n"
-"\n      Launches the interface of this process."
-"\n"
-"\n--help"
-"\n"
-"\n      Displays this help and exits."
-"</raw>" );
-}
-
-int CFA2RGBProcess::ProcessCommandLine( const StringList& argv ) const
-{
-   ArgumentList arguments =
-   ExtractArguments( argv, ArgumentItemMode::AsViews, ArgumentOption::AllowWildcards );
-
-   CFA2RGBInstance instance( this );
-
-   bool launchInterface = false;
-   int count = 0;
-
-   for ( ArgumentList::const_iterator i = arguments.Begin(); i != arguments.End(); ++i )
-   {
-      const Argument& arg = *i;
-
-      if ( arg.IsNumeric() )
-      {
-         throw Error( "Unknown numeric argument: " + arg.Token() );
-      }
-      else if ( arg.IsString() )
-      {
-         throw Error( "Unknown string argument: " + arg.Token() );
-      }
-      else if ( arg.IsSwitch() )
-      {
-         throw Error( "Unknown switch argument: " + arg.Token() );
-      }
-      else if ( arg.IsLiteral() )
-      {
-         // These are standard parameters that all processes should provide.
-         if ( arg.Id() == "-interface" )
-            launchInterface = true;
-         else if ( arg.Id() == "-help" )
-         {
-            ShowHelp();
-            return 0;
-         }
-         else
-            throw Error( "Unknown argument: " + arg.Token() );
-      }
-      else if ( arg.IsItemList() )
-      {
-         ++count;
-
-         if ( arg.Items().IsEmpty() )
-         {
-            Console().WriteLn( "No view(s) found: " + arg.Token() );
-            throw;
-         }
-
-         for ( StringList::const_iterator j = arg.Items().Begin(); j != arg.Items().End(); ++j )
-         {
-            View v = View::ViewById( *j );
-            if ( v.IsNull() )
-               throw Error( "No such view: " + *j );
-            instance.LaunchOn( v );
-         }
-      }
-   }
-
-   if ( launchInterface )
-      instance.LaunchInterface();
-   else if ( count == 0 )
-   {
-      if ( ImageWindow::ActiveWindow().IsNull() )
-         throw Error( "There is no active image window." );
-      instance.LaunchOnCurrentView();
-   }
-
-   return 0;
-}
-
-// ----------------------------------------------------------------------------
-
 } // pcl
 
 // ****************************************************************************
-// EOF CFA2RGBProcess.cpp - Released 2014/10/29 07:35:26 UTC
+// EOF CFA2RGBProcess.cpp - Released 2015/03/11 07:35:26 UTC

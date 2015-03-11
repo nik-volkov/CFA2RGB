@@ -1,12 +1,12 @@
 // ****************************************************************************
-// PixInsight Class Library - PCL 02.00.13.0689
-// Standard CFA2RGB Process Module Version 01.04.03.0144
+// PixInsight Class Library - PCL 02.00.14.0695
+// Standard CFA2RGB Process Module Version 01.01.01.0001
 // ****************************************************************************
-// CFA2RGBInterface.cpp - Released 2014/10/29 07:35:26 UTC
+// CFA2RGBInterface.cpp - Released 2015/03/11 07:35:26 UTC
 // ****************************************************************************
 // This file is part of the standard CFA2RGB PixInsight module.
 //
-// Copyright (c) 2003-2014, Pleiades Astrophoto S.L. All Rights Reserved.
+// Copyright (c) 2003-2015, Pleiades Astrophoto S.L. All Rights Reserved.
 //
 // Redistribution and use in both source and binary forms, with or without
 // modification, is permitted provided that the following conditions are met:
@@ -154,11 +154,7 @@ void CFA2RGBInterface::__ItemSelected( ComboBox& sender, int itemIndex )
 
 CFA2RGBInterface::GUIData::GUIData( CFA2RGBInterface& w )
 {
-   //pcl::Font fnt = w.Font();
-   //int labelWidth1 = fnt.Width( String( "Pattern:" ) ) + 16; // the longest label text
-
    PatternLabel.SetText( "Bayer pattern:" );
-   //PatternLabel.SetFixedWidth( labelWidth1 );
    PatternLabel.SetTextAlignment( TextAlign::Right|TextAlign::VertCenter );
    PatternLabel.AdjustToContents();
 
@@ -167,10 +163,7 @@ CFA2RGBInterface::GUIData::GUIData( CFA2RGBInterface& w )
    BayerPatternCombo.AddItem( "GBRG" );
    BayerPatternCombo.AddItem( "GRBG" );
    BayerPatternCombo.AdjustToContents();
-   BayerPatternCombo.SetToolTip( "<p>Select the Bayer pattern of your color (OSC) camera.</p>" );
    BayerPatternCombo.OnItemSelected( (ComboBox::item_event_handler)&CFA2RGBInterface::__ItemSelected, w );
-     
-   //BayerPatternCombo.SetFixedWidth();
 
    PatternSizer.SetSpacing( 4 );
    PatternSizer.Add( PatternLabel );
@@ -190,4 +183,4 @@ CFA2RGBInterface::GUIData::GUIData( CFA2RGBInterface& w )
 } // pcl
 
 // ****************************************************************************
-// EOF CFA2RGBInterface.cpp - Released 2014/10/29 07:35:26 UTC
+// EOF CFA2RGBInterface.cpp - Released 2015/03/11 07:35:26 UTC
