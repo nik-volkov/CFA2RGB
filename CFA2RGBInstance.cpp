@@ -95,29 +95,14 @@ template <class P>
 void Apply(GenericImage<P>& img, pcl_enum bayerPattern )
 {
 	bool Rx, Ry, Gx0, Gx1, Bx, By;
+    Rx = Ry = Gx0 = Gx1 = Bx = By = 0;
 	switch ( bayerPattern )
-	{
-	case CFA2RGBBayerPatternParameter::RGGB:
-		Rx  = 0; Ry  = 0;
-		Gx0 = 1; Gx1 = 0;
-		Bx  = 1; By  = 1;
-		break;
-	case CFA2RGBBayerPatternParameter::BGGR:
-		Rx  = 1; Ry  = 1;
-		Gx0 = 1; Gx1 = 0;
-		Bx  = 0; By  = 0;
-		break;
-	case CFA2RGBBayerPatternParameter::GRBG:
-		Rx  = 1; Ry  = 0;
-		Gx0 = 0; Gx1 = 1;
-		Bx  = 0; By  = 1;
-		break;
-	case CFA2RGBBayerPatternParameter::GBRG:
-		Rx  = 0; Ry  = 1;
-		Gx0 = 0; Gx1 = 1;
-		Bx  = 1; By  = 0;
-		break;
-	}
+      {
+      case CFA2RGBBayerPatternParameter::RGGB: Gx0=Bx=By=1; break;
+      case CFA2RGBBayerPatternParameter::BGGR: Rx=Ry=Gx0=1; break;
+      case CFA2RGBBayerPatternParameter::GRBG: Rx=Gx1=1; break;
+      case CFA2RGBBayerPatternParameter::GBRG: Ry=Gx1=Bx=1; break;
+      }
 
 	for ( int x = 0; x < img.Width(); ++x )
 	{
@@ -125,9 +110,9 @@ void Apply(GenericImage<P>& img, pcl_enum bayerPattern )
 		for ( int y = 0; y < img.Height(); ++y )
 		{
 			const bool y1(y&1);
-			if ( x1!=Rx || y1!=Ry )			img.Pixel(x,y,0) = 0; //R
-			if ( y1 ? x1!=Gx1 : x1!=Gx0 )	img.Pixel(x,y,1) = 0; //G
-			if ( x1!=Bx || y1!=By ) 		img.Pixel(x,y,2) = 0; //B
+			if ( x1!=Rx || y1!=Ry ) img.Pixel(x,y,0) = 0; //R
+			if ( y1 ? x1!=Gx1 : x1!=Gx0 ) img.Pixel(x,y,1) = 0; //G
+			if ( x1!=Bx || y1!=By ) img.Pixel(x,y,2) = 0; //B
 		}
 	}
 }
