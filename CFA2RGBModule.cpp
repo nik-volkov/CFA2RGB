@@ -1,12 +1,16 @@
-// ****************************************************************************
-// PixInsight Class Library - PCL 02.00.14.0695
-// Standard CFA2RGB Process Module Version 01.01.01.0001
-// ****************************************************************************
-// CFA2RGBModule.cpp - Released 2015/03/11 07:35:26 UTC
-// ****************************************************************************
+//     ____   ______ __
+//    / __ \ / ____// /
+//   / /_/ // /    / /
+//  / ____// /___ / /___   PixInsight Class Library
+// /_/     \____//_____/   PCL 02.01.00.0779
+// ----------------------------------------------------------------------------
+// Standard CFA2RGB Process Module Version 01.01.01.0010
+// ----------------------------------------------------------------------------
+// CFA2RGBModule.cpp - Released 2016/02/03 00:00:00 UTC
+// ----------------------------------------------------------------------------
 // This file is part of the standard CFA2RGB PixInsight module.
 //
-// Copyright (c) 2003-2015, Pleiades Astrophoto S.L. All Rights Reserved.
+// Copyright (c) 2003-2016 Pleiades Astrophoto S.L. All Rights Reserved.
 //
 // Redistribution and use in both source and binary forms, with or without
 // modification, is permitted provided that the following conditions are met:
@@ -44,17 +48,18 @@
 // CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
+// ----------------------------------------------------------------------------
 // ****************************************************************************
 
 #define MODULE_VERSION_MAJOR     01
 #define MODULE_VERSION_MINOR     01
 #define MODULE_VERSION_REVISION  01
-#define MODULE_VERSION_BUILD     0001
+#define MODULE_VERSION_BUILD     0010
 #define MODULE_VERSION_LANGUAGE  eng
 
-#define MODULE_RELEASE_YEAR      2015
-#define MODULE_RELEASE_MONTH     3
-#define MODULE_RELEASE_DAY       11
+#define MODULE_RELEASE_YEAR      2016
+#define MODULE_RELEASE_MONTH     2
+#define MODULE_RELEASE_DAY       3
 
 #include "CFA2RGBModule.h"
 #include "CFA2RGBProcess.h"
@@ -100,7 +105,7 @@ String CFA2RGBModule::Author() const
 
 String CFA2RGBModule::Copyright() const
 {
-   return "Copyright (c) 2012-2015 Nikolay Volkov";
+   return "Copyright (c) 2012-2016 Nikolay Volkov";
 }
 
 String CFA2RGBModule::TradeMarks() const
@@ -175,4 +180,4 @@ PCL_MODULE_EXPORT int InstallPixInsightModule( int mode )
 }
 
 // ****************************************************************************
-// EOF CFA2RGBModule.cpp - Released 2015/03/11 07:35:26 UTC
+// EOF CFA2RGBModule.cpp - Released 2016/02/03 00:00:00 UTC

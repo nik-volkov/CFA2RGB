@@ -1,12 +1,16 @@
-// ****************************************************************************
-// PixInsight Class Library - PCL 02.00.14.0695
-// Standard CFA2RGB Process Module Version 01.01.01.0001
-// ****************************************************************************
-// CFA2RGBInterface.h - Released 2015/03/11 07:35:26 UTC
-// ****************************************************************************
+//     ____   ______ __
+//    / __ \ / ____// /
+//   / /_/ // /    / /
+//  / ____// /___ / /___   PixInsight Class Library
+// /_/     \____//_____/   PCL 02.01.00.0779
+// ----------------------------------------------------------------------------
+// Standard CFA2RGB Process Module Version 01.01.01.0010
+// ----------------------------------------------------------------------------
+// CFA2RGBInterface.h - Released 2016/02/03 00:00:00 UTC
+// ----------------------------------------------------------------------------
 // This file is part of the standard CFA2RGB PixInsight module.
 //
-// Copyright (c) 2003-2015, Pleiades Astrophoto S.L. All Rights Reserved.
+// Copyright (c) 2003-2016 Pleiades Astrophoto S.L. All Rights Reserved.
 //
 // Redistribution and use in both source and binary forms, with or without
 // modification, is permitted provided that the following conditions are met:
@@ -44,7 +48,7 @@
 // CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
-// ****************************************************************************
+// ----------------------------------------------------------------------------
 
 #ifndef __CFA2RGBInterface_h
 #define __CFA2RGBInterface_h
@@ -122,4 +126,4 @@ PCL_END_LOCAL
 #endif   // __CFA2RGBInterface_h
 
 // ****************************************************************************
-// EOF CFA2RGBInterface.h - Released 2015/03/11 07:35:26 UTC
+// EOF CFA2RGBInterface.h - Released 2016/02/03 00:00:00 UTC
